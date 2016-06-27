@@ -8,13 +8,21 @@
 
   <script>
 
-    var URL = "teotaxi://";
+    var iOS = "teotaxi://";
+    var android = "intent:#Intent;package=com.taxelco.teotaxi;S.browser_fallback=http%3A%2F%2Fteomtl.com%2F;end";
     var fallbackURL = "http://teomtl.com";
 
     function onLoad() {
 
-//      if (navigator.userAgent.match(/Android/)) {
-//
+      if (navigator.userAgent.match(/Android/)) {
+
+        setTimeout(function() {
+          if (!document.webkitHidden)
+            window.location = fallbackURL;
+        }, 1000);
+
+        window.location = android;
+
 //        if (navigator.userAgent.match(/Chrome/)) {
 //
 //          // Jelly Bean with Chrome browser
@@ -23,7 +31,7 @@
 //              window.location = fallbackURL;
 //          }, 1000);
 //
-//          window.location = URL;
+//          window.location = android;
 //
 //        } else {
 //          // Older Android browser
@@ -40,21 +48,21 @@
 //          iframe.src = URL;
 //          document.body.appendChild(iframe);
 //        }
-//
-//      } else if (navigator.userAgent.match(/iPhone|iPad|iPod/)) {
-//
-//        // IOS
-//        setTimeout(function() {
-//          if (!document.webkitHidden)
-//            window.location = fallbackURL;
-//        }, 1000);
-//
-//        window.location = URL;
-//
-//      } else {
-//        // Not mobile
-//        window.location = fallbackURL;
-//      }
+
+      } else if (navigator.userAgent.match(/iPhone|iPad|iPod/)) {
+
+        // IOS
+        setTimeout(function() {
+          if (!document.webkitHidden)
+            window.location = fallbackURL;
+        }, 1000);
+
+        window.location = iOS;
+
+      } else {
+        // Not mobile
+        window.location = fallbackURL;
+      }
     }
   </script>
 </head>
