@@ -9,7 +9,7 @@
   <script>
 
     var iOS = "teotaxi://";
-    var android = "intent:#Intent;scheme=teotaxi;package=com.taxelco.teotaxi;S.browser_fallback=http%3A%2F%2Fteomtl.com%2F;end";
+    var android = "intent:#Intent;package=com.taxelco.teotaxi;S.browser_fallback=http%3A%2F%2Fteomtl.com%2F;end";
     var fallbackURL = "http://teomtl.com";
 
     function onLoad() {
@@ -21,33 +21,12 @@
             window.location = fallbackURL;
         }, 1000);
 
-        window.location = android;
+        var clickTarget = document.getElementById("clickTarget");
+        var fakeMouseEvent = document.createEvent('MouseEvents');
 
-//        if (navigator.userAgent.match(/Chrome/)) {
-//
-//          // Jelly Bean with Chrome browser
-//          setTimeout(function() {
-//            if (!document.webkitHidden)
-//              window.location = fallbackURL;
-//          }, 1000);
-//
-//          window.location = android;
-//
-//        } else {
-//          // Older Android browser
-//          var iframe = document.createElement("iframe");
-//          iframe.style.border = "none";
-//          iframe.style.width = "1px";
-//          iframe.style.height = "1px";
-//
-//          var t = setTimeout(function() {
-//            window.location = fallbackURL;
-//          }, 1000);
-//
-//          iframe.onload = function () { clearTimeout(t) };
-//          iframe.src = URL;
-//          document.body.appendChild(iframe);
-//        }
+        fakeMouseEvent.initMouseEvent("click", true, true, window, 0, 0, 0, 20, 10, false, false, false, false, 0, null);
+
+        clickTarget.dispatchEvent(fakeMouseEvent);
 
       } else if (navigator.userAgent.match(/iPhone|iPad|iPod/)) {
 
@@ -68,6 +47,6 @@
 </head>
 
 <body onload="onLoad()">
-  <a class="source-url" href="intent:#Intent;package=com.taxelco.teotaxi;S.browser_fallback=http%3A%2F%2Fteomtl.com%2F;end">TEST</a>
+  <a id="clickTarget" href="intent:#Intent;scheme=teotaxi;package=com.taxelco.teotaxi;S.browser_fallback=http%3A%2F%2Fteomtl.com%2F;end">Open</a>
 </body>
 </html>
