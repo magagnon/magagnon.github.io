@@ -37,7 +37,7 @@
       if (userAgent == 'iOS')
         window.location = 'teotaxi://';
       else if (userAgent == 'Android')
-        window.location = '#Intent;scheme=teotaxi;package=com.taxelco.teotaxi;S.browser_fallback_url=http%3A%2F%2Fteomtl.com;end';
+        window.location = 'intent://email_validation/#Intent;scheme=teotaxi;package=com.taxelco.teotaxi;S.browser_fallback_url=http%3A%2F%2Fteomtl.com;end';
 
       <!-- Default url for users who don't have the app installed -->
       setTimeout("window.location = 'http://teomtl.com';", 1000)
