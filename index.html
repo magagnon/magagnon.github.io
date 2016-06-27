@@ -7,9 +7,37 @@
   <style>@media screen and (max-device-width:480px){body{-webkit-text-size-adjust:none}}</style>
 
   <script>
+    /**
+     * Determine the mobile operating system.
+     * This function either returns 'iOS', 'Android' or 'unknown'
+     *
+     * @returns {String}
+     */
+    function getMobileOperatingSystem() {
+      var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+      if( userAgent.match( /iPad/i ) || userAgent.match( /iPhone/i ) || userAgent.match( /iPod/i ) )
+      {
+        return 'iOS';
+      }
+      else if( userAgent.match( /Android/i ) )
+      {
+        return 'Android';
+      }
+      else
+      {
+        return 'unknown';
+      }
+    }
+
     window.onload = function() {
       <!-- Deep link URL for existing users with app already installed on their device -->
-      window.location = 'teotaxi://';
+      userAgent = getMobileOperatingSystem();
+
+      if (userAgent == 'iOS')
+        window.location = 'teotaxi://';
+      else if (userAgent == 'Android')
+        window.location = '#Intent;scheme=teotaxi;package=com.taxelco.teotaxi;S.browser_fallback_url=http%3A%2F%2Fteomtl.com;end';
 
       <!-- Default url for users who don't have the app installed -->
       setTimeout("window.location = 'http://teomtl.com';", 1000)
