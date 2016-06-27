@@ -7,44 +7,59 @@
   <style>@media screen and (max-device-width:480px){body{-webkit-text-size-adjust:none}}</style>
 
   <script>
-    /**
-     * Determine the mobile operating system.
-     * This function either returns 'iOS', 'Android' or 'unknown'
-     *
-     * @returns {String}
-     */
-    function getMobileOperatingSystem() {
-      var userAgent = navigator.userAgent || navigator.vendor || window.opera;
 
-      if( userAgent.match( /iPad/i ) || userAgent.match( /iPhone/i ) || userAgent.match( /iPod/i ) )
-      {
-        return 'iOS';
-      }
-      else if( userAgent.match( /Android/i ) )
-      {
-        return 'Android';
-      }
-      else
-      {
-        return 'unknown';
-      }
-    }
+    var URL = "teotaxi://";
+    var fallbackURL = "http://teomtl.com";
 
-    window.onload = function() {
-      <!-- Deep link URL for existing users with app already installed on their device -->
-      userAgent = getMobileOperatingSystem();
+    function onLoad() {
 
-      if (userAgent == 'iOS')
-        window.location = 'teotaxi://';
-      else if (userAgent == 'Android')
-        window.location = 'intent://email_validation/#Intent;scheme=teotaxi;package=com.taxelco.teotaxi;S.browser_fallback_url=http%3A%2F%2Fteomtl.com;end';
-
-      <!-- Default url for users who don't have the app installed -->
-      setTimeout("window.location = 'http://teomtl.com';", 1000)
+//      if (navigator.userAgent.match(/Android/)) {
+//
+//        if (navigator.userAgent.match(/Chrome/)) {
+//
+//          // Jelly Bean with Chrome browser
+//          setTimeout(function() {
+//            if (!document.webkitHidden)
+//              window.location = fallbackURL;
+//          }, 1000);
+//
+//          window.location = URL;
+//
+//        } else {
+//          // Older Android browser
+//          var iframe = document.createElement("iframe");
+//          iframe.style.border = "none";
+//          iframe.style.width = "1px";
+//          iframe.style.height = "1px";
+//
+//          var t = setTimeout(function() {
+//            window.location = fallbackURL;
+//          }, 1000);
+//
+//          iframe.onload = function () { clearTimeout(t) };
+//          iframe.src = URL;
+//          document.body.appendChild(iframe);
+//        }
+//
+//      } else if (navigator.userAgent.match(/iPhone|iPad|iPod/)) {
+//
+//        // IOS
+//        setTimeout(function() {
+//          if (!document.webkitHidden)
+//            window.location = fallbackURL;
+//        }, 1000);
+//
+//        window.location = URL;
+//
+//      } else {
+//        // Not mobile
+//        window.location = fallbackURL;
+//      }
     }
   </script>
 </head>
 
-<body>
+<body onload="onLoad()">
+  <a class="source-url" href="intent:#Intent;action=com.taxelco.teotaxi;category=android.intent.category.DEFAULT;category=android.intent.category.BROWSABLE;S.msg_from_browser=Launched%20from%20Browser;end">TEST</a>
 </body>
 </html>
