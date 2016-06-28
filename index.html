@@ -14,7 +14,8 @@
           IS_IOS = IS_IPAD || IS_IPHONE,
           IS_ANDROID = !IS_IOS && navigator.userAgent.match(/android/i) != null,
           IS_MOBILE = IS_IOS || IS_ANDROID;
-          ANDROID_STORE = 'market://details?id=com.taxelco.teotaxi';
+          //ANDROID_STORE = 'market://details?id=com.taxelco.teotaxi';
+          ANDROID_STORE = 'http://market.android.com/details?id=com.taxelco.teotaxi';
           IOS_STORE = 'https://itunes.apple.com/ca/app/teo-taxi-service-like-no-other./id1097805638';
 
       // If it's not an universal app, use IS_IPAD or IS_IPHONE
@@ -34,7 +35,6 @@
 
       } else {
         window.location = 'http://teomtl.com';
-        market://details?id=com.taxelco.teotaxi
     }
   </script>
 </head>
