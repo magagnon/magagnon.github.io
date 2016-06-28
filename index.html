@@ -21,12 +21,11 @@
           IS_ANDROID = !IS_IOS && navigator.userAgent.match(/android/i) != null,
           IS_MOBILE = IS_IOS || IS_ANDROID;
 
-
       // If it's not an universal app, use IS_IPAD or IS_IPHONE
       if (IS_IOS) {
         window.location = "teotaxi://";
 
-        setTimeout(function() {
+        setTimeout(function () {
 
           // If the user is still here, open the App Store
           if (!document.webkitHidden) {
@@ -39,125 +38,11 @@
       } else if (IS_ANDROID) {
 
         // Instead of using the actual URL scheme, use 'intent://' for better UX
-        window.location = 'intent://view?id=123#Intent;package=my.app.id;scheme=myapp;launchFlags=268435456;end;';
+        window.location = 'intent://#Intent;package=com.taxelco.teotaxi;scheme=teotaxi;launchFlags=268435456;end;';
+      } else {
+        window.location = 'http://teomtl.com';
       }
-//      <!-- Deep link URL for existing users with app already installed on their device -->
-//
-//      if (navigator.userAgent.match(/iPhone|iPad|iPod/)) {
-//
-//        window.location = 'badscheme://';
-//        setTimeout("window.location = 'itms://itunes.apple.com/ca/app/teo-taxi-service-like-no-other./id1097805638?mt=8';", 1000);
-//
-//        //setTimeout("window.location = 'http://teomtl.com';", 1000);
-//
-//
-//      }
-//      else if (navigator.userAgent.match(/Android/)) {
-//        setTimeout("window.location = 'market://details?id=com.taxelco.teotaxi';", 1000);
-//        alert('lets click this thing')
-//        $('.source-url').trigger('click');
-//      }
-//      <!-- Default url for users who don't have the app installed -->
-//      //setTimeout("window.location = 'http://teomtl.com';", 1000);
     }
-
-
-//    var custom = "teomtl://";
-//    var alt = "http://teomtl.com";
-//    var g_intent = "intent:#Intent;package=com.taxelco.teotaxi;S.browser_fallback=http%3A%2F%2Fteomtl.com%2F;end";
-//    var timer;
-//    var heartbeat;
-//    var iframe_timer;
-//
-//    function clearTimers() {
-//      clearTimeout(timer);
-//      clearTimeout(heartbeat);
-//      clearTimeout(iframe_timer);
-//    }
-//
-//    function intervalHeartbeat() {
-//      if (document.webkitHidden || document.hidden) {
-//        clearTimers();
-//      }
-//    }
-//
-//    function tryIframeApproach() {
-//      var iframe = document.createElement("iframe");
-//      iframe.style.border = "none";
-//      iframe.style.width = "1px";
-//      iframe.style.height = "1px";
-//      iframe.onload = function () {
-//        document.location = alt;
-//      };
-//      iframe.src = custom;
-//      document.body.appendChild(iframe);
-//    }
-//
-//    function tryWebkitApproach() {
-//      document.location = custom;
-//      timer = setTimeout(function () {
-//        document.location = alt;
-//      }, 2500);
-//    }
-//
-//    function useIntent() {
-//      document.location = g_intent;
-//    }
-//
-//    function launch_app_or_alt_url(el) {
-//      heartbeat = setInterval(intervalHeartbeat, 200);
-//      if (navigator.userAgent.match(/Chrome/)) {
-//        useIntent();
-//      } else if (navigator.userAgent.match(/Firefox/)) {
-//        tryWebkitApproach();
-//        iframe_timer = setTimeout(function () {
-//          tryIframeApproach();
-//        }, 1500);
-//      } else {
-//        tryIframeApproach();
-//      }
-//    }
-//
-//    $(".source_url").click(function (event) {
-//      launch_app_or_alt_url($(this));
-//      event.preventDefault();
-//    });
-
-//    var iOS = "teotaxi://";
-//    var android = "intent:#Intent;package=com.taxelco.teotaxi;S.browser_fallback=http%3A%2F%2Fteomtl.com%2F;end";
-//    var fallbackURL = "http://teomtl.com";
-//
-//    function onLoad() {
-//
-//      if (navigator.userAgent.match(/Android/)) {
-//
-//        setTimeout(function() {
-//          if (!document.webkitHidden)
-//            window.location = fallbackURL;
-//        }, 1000);
-//
-//        var clickTarget = document.getElementById("clickTarget");
-//        var fakeMouseEvent = document.createEvent('MouseEvents');
-//
-//        fakeMouseEvent.initMouseEvent("click", true, true, window, 0, 0, 0, 20, 10, false, false, false, false, 0, null);
-//
-//        clickTarget.dispatchEvent(fakeMouseEvent);
-//
-//      } else if (navigator.userAgent.match(/iPhone|iPad|iPod/)) {
-//
-//        // IOS
-//        setTimeout(function() {
-//          if (!document.webkitHidden)
-//            window.location = fallbackURL;
-//        }, 1000);
-//
-//        window.location = iOS;
-//
-//      } else {
-//        // Not mobile
-//        window.location = fallbackURL;
-//      }
-//    }
   </script>
 </head>
 
