@@ -36,17 +36,17 @@
                                                                                    $
       } else if (IS_ANDROID) {
         // Instead of using the actual URL scheme, use 'intent://' for better UX
-        $('.source-url').trigger('click')
+        $('#androidAnchor').trigger('click')
         //window.location = 'teotaxi://email_validation';
         //window.location = 'intent://email_validation#Intent;package=com.taxelco.teotaxi;scheme=teotaxi;launchFlags=268435456;end;';
       } else {
-        window.location = 'http://teomtl.com';
+        //window.location = 'http://teomtl.com';
       }
     }
   </script>
 </head>
 
 <body>
-  <a class="source-url" href="intent://#Intent;package=com.taxelco.teotaxi;scheme=teotaxi;launchFlags=268435456;end;">Open</a>
+  <a id="androidAnchor" href="intent://#Intent;package=com.taxelco.teotaxi;scheme=teotaxi;launchFlags=268435456;end;">Open</a>
 </body>
 </html>
