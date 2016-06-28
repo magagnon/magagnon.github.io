@@ -14,6 +14,8 @@
           IS_IOS = IS_IPAD || IS_IPHONE,
           IS_ANDROID = !IS_IOS && navigator.userAgent.match(/android/i) != null,
           IS_MOBILE = IS_IOS || IS_ANDROID;
+          ANDROID_STORE = 'http://play.google.com/store/apps/details?id=com.taxelco.teotaxi';
+          IOS_STORE = 'https://itunes.apple.com/ca/app/teo-taxi-service-like-no-other./id1097805638';
 
       // If it's not an universal app, use IS_IPAD or IS_IPHONE
       if (IS_IOS) {
@@ -24,7 +26,7 @@
           if (!document.webkitHidden) {
 
             // Replace the Apple ID following '/id'
-            window.location = 'https://itunes.apple.com/ca/app/teo-taxi-service-like-no-other./id1097805638';
+            window.location = IOS_STORE
           }
         }, 25);
       } else if (IS_ANDROID) {
