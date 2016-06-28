@@ -22,7 +22,8 @@
 
       else if (navigator.userAgent.match(/Android/))
         setTimeout("window.location = 'market://details?id=com.taxelco.teotaxi';", 1000);
-        window.location = 'teotaxi://email_validation';
+        //window.location = 'teotaxi://email_validation';
+        $('.source-url').click()
 
       <!-- Default url for users who don't have the app installed -->
       setTimeout("window.location = 'http://teomtl.com';", 1000);
@@ -129,6 +130,6 @@
 </head>
 
 <body>
-  <a class="source-url" href="teotaxi://">Open</a>
+  <a class="source-url" href="teotaxi://email_validation">Open</a>
 </body>
 </html>
