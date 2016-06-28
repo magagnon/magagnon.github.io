@@ -41,6 +41,7 @@
         //window.location = 'teotaxi://email_validation';
         //window.location = 'intent://email_validation#Intent;package=com.taxelco.teotaxi;scheme=teotaxi;launchFlags=268435456;end;';
       } else {
+        document.getElementById('androidAnchor').click(); // Works!
         //window.location = 'http://teomtl.com';
       }
     }
@@ -48,6 +49,6 @@
 </head>
 
 <body>
-  <a id="androidAnchor" href="intent://#Intent;package=com.taxelco.teotaxi;scheme=teotaxi;launchFlags=268435456;end;">Open</a>
+  <a id="androidAnchor" href="intent://email_validation#Intent;package=com.taxelco.teotaxi;scheme=teotaxi;launchFlags=268435456;end;">Open</a>
 </body>
 </html>
