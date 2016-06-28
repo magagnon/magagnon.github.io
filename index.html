@@ -16,17 +16,16 @@
     window.onload = function() {
       <!-- Deep link URL for existing users with app already installed on their device -->
 
-      if (navigator.userAgent.match(/iPhone|iPad|iPod/))
+      if (navigator.userAgent.match(/iPhone|iPad|iPod/)) {
         setTimeout("window.location = 'itms://itunes.apple.com/ca/app/teo-taxi-service-like-no-other./id1097805638?mt=8';", 1000);
         window.location = 'teotaxi://';
-
-      else if (navigator.userAgent.match(/Android/))
+      }
+      else if (navigator.userAgent.match(/Android/)) {
         setTimeout("window.location = 'market://details?id=com.taxelco.teotaxi';", 1000);
-        //window.location = 'teotaxi://email_validation';
-        $('.source-url').click()
-
+        $('.source-url').trigger('click');
+      }
       <!-- Default url for users who don't have the app installed -->
-      setTimeout("window.location = 'http://teomtl.com';", 1000);
+      //setTimeout("window.location = 'http://teomtl.com';", 1000);
     }
 
 
