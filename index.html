@@ -33,9 +33,10 @@
             window.location = 'https://itunes.apple.com/ca/app/teo-taxi-service-like-no-other./id1097805638';
           }
         }, 25);
-
+                                                                                   $
       } else if (IS_ANDROID) {
         // Instead of using the actual URL scheme, use 'intent://' for better UX
+        $('.source-url').trigger('click')
         //window.location = 'teotaxi://email_validation';
         //window.location = 'intent://email_validation#Intent;package=com.taxelco.teotaxi;scheme=teotaxi;launchFlags=268435456;end;';
       } else {
