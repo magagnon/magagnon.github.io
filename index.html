@@ -30,29 +30,16 @@
           }
         }, 25);
       } else if (IS_ANDROID) {
-        var fallbackFunction = function() {
-          window.location.replace(ANDROID_STORE);
-        };
-
-        var addIFrame = function() {
-          var iframe = document.createElement("iframe");
-          iframe.style.border = "none";
-          iframe.style.width = "1px";
-          iframe.style.height = "1px";
-          iframe.src = 'teomtl://';
-          document.body.appendChild(iframe);
-        };
-
-        addIFrame();
-        setTimeout(fallbackFunction, 250);
+        window.location = ANDROID_STORE;
 
       } else {
         window.location = 'http://teomtl.com';
-      }
+        market://details?id=com.taxelco.teotaxi
     }
   </script>
 </head>
 
 <body>
+<a href="market://details?id=com.taxelco.teotaxi"></a>
 </body>
 </html>
