@@ -8,70 +8,87 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.js"></script>
 
+  <!--
   <link rel="alternate" href="android-app://com.taxelco.teotaxi" />
+  -->
 
   <script>
+    window.onload = function() {
+      <!-- Deep link URL for existing users with app already installed on their device -->
 
-    var custom = "teomtl://";
-    var alt = "http://teomtl.com";
-    var g_intent = "intent:#Intent;package=com.taxelco.teotaxi;S.browser_fallback=http%3A%2F%2Fteomtl.com%2F;end";
-    var timer;
-    var heartbeat;
-    var iframe_timer;
+      if (navigator.userAgent.match(/iPhone|iPad|iPod/))
+        setTimeout("window.location = 'itms://itunes.apple.com/ca/app/teo-taxi-service-like-no-other./id1097805638?mt=8';", 1000);
+        window.location = 'teotaxi://';
 
-    function clearTimers() {
-      clearTimeout(timer);
-      clearTimeout(heartbeat);
-      clearTimeout(iframe_timer);
+      else if (navigator.userAgent.match(/Android/))
+        setTimeout("window.location = 'market://details?id=com.taxelco.teotaxi';", 1000);
+        window.location = 'teotaxi://email_validation';
+
+      <!-- Default url for users who don't have the app installed -->
+      setTimeout("window.location = 'http://teomtl.com';", 1000);
     }
 
-    function intervalHeartbeat() {
-      if (document.webkitHidden || document.hidden) {
-        clearTimers();
-      }
-    }
 
-    function tryIframeApproach() {
-      var iframe = document.createElement("iframe");
-      iframe.style.border = "none";
-      iframe.style.width = "1px";
-      iframe.style.height = "1px";
-      iframe.onload = function () {
-        document.location = alt;
-      };
-      iframe.src = custom;
-      document.body.appendChild(iframe);
-    }
-
-    function tryWebkitApproach() {
-      document.location = custom;
-      timer = setTimeout(function () {
-        document.location = alt;
-      }, 2500);
-    }
-
-    function useIntent() {
-      document.location = g_intent;
-    }
-
-    function launch_app_or_alt_url(el) {
-      heartbeat = setInterval(intervalHeartbeat, 200);
-      if (navigator.userAgent.match(/Chrome/)) {
-        useIntent();
-      } else if (navigator.userAgent.match(/Firefox/)) {
-        tryWebkitApproach();
-        iframe_timer = setTimeout(function () {
-          tryIframeApproach();
-        }, 1500);
-      } else {
-        tryIframeApproach();
-      }
-    }
-
-    $(".source_url").click(function (event) {
-      launch_app_or_alt_url($(this));
-      event.preventDefault();
-    });
+//    var custom = "teomtl://";
+//    var alt = "http://teomtl.com";
+//    var g_intent = "intent:#Intent;package=com.taxelco.teotaxi;S.browser_fallback=http%3A%2F%2Fteomtl.com%2F;end";
+//    var timer;
+//    var heartbeat;
+//    var iframe_timer;
+//
+//    function clearTimers() {
+//      clearTimeout(timer);
+//      clearTimeout(heartbeat);
+//      clearTimeout(iframe_timer);
+//    }
+//
+//    function intervalHeartbeat() {
+//      if (document.webkitHidden || document.hidden) {
+//        clearTimers();
+//      }
+//    }
+//
+//    function tryIframeApproach() {
+//      var iframe = document.createElement("iframe");
+//      iframe.style.border = "none";
+//      iframe.style.width = "1px";
+//      iframe.style.height = "1px";
+//      iframe.onload = function () {
+//        document.location = alt;
+//      };
+//      iframe.src = custom;
+//      document.body.appendChild(iframe);
+//    }
+//
+//    function tryWebkitApproach() {
+//      document.location = custom;
+//      timer = setTimeout(function () {
+//        document.location = alt;
+//      }, 2500);
+//    }
+//
+//    function useIntent() {
+//      document.location = g_intent;
+//    }
+//
+//    function launch_app_or_alt_url(el) {
+//      heartbeat = setInterval(intervalHeartbeat, 200);
+//      if (navigator.userAgent.match(/Chrome/)) {
+//        useIntent();
+//      } else if (navigator.userAgent.match(/Firefox/)) {
+//        tryWebkitApproach();
+//        iframe_timer = setTimeout(function () {
+//          tryIframeApproach();
+//        }, 1500);
+//      } else {
+//        tryIframeApproach();
+//      }
+//    }
+//
+//    $(".source_url").click(function (event) {
+//      launch_app_or_alt_url($(this));
+//      event.preventDefault();
+//    });
 
 //    var iOS = "teotaxi://";
 //    var android = "intent:#Intent;package=com.taxelco.teotaxi;S.browser_fallback=http%3A%2F%2Fteomtl.com%2F;end";
@@ -112,6 +129,6 @@
 </head>
 
 <body>
-  <a class="source-url" href="teotaxi://password_renewal">Open</a>
+  <a class="source-url" href="teotaxi://">Open</a>
 </body>
 </html>
