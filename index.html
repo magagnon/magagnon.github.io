@@ -6,12 +6,6 @@
   <title>Téo</title>
   <style>@media screen and (max-device-width:480px){body{-webkit-text-size-adjust:none}}</style>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.js"></script>
-
-  <!--
-  <link rel="alternate" href="android-app://com.taxelco.teotaxi" />
-  -->
-
   <script>
     window.onload = function() {
 
@@ -35,23 +29,14 @@
         }, 25);
                                                                                    $
       } else if (IS_ANDROID) {
-        // Instead of using the actual URL scheme, use 'intent://' for better UX
-
-        $('#androidAnchor').trigger('touchstart');
-
-        //document.getElementById('androidAnchor').click(); // Works!
-        //$('#androidAnchor').trigger('click')
-        //window.location = 'teotaxi://email_validation';
-        //window.location = 'intent://email_validation#Intent;package=com.taxelco.teotaxi;scheme=teotaxi;launchFlags=268435456;end;';
+        window.location = 'intent://email_validation#Intent;package=com.taxelco.teotaxi;scheme=teotaxi;launchFlags=268435456;end;';
       } else {
-        document.getElementById('androidAnchor').click(); // Works!
-        //window.location = 'http://teomtl.com';
+        window.location = 'http://teomtl.com';
       }
     }
   </script>
 </head>
 
 <body>
-  <a id="androidAnchor" href="intent://email_validation#Intent;package=com.taxelco.teotaxi;scheme=teotaxi;launchFlags=268435456;end;">Open</a>
 </body>
 </html>
